@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>index_demo</title>
+  <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="css/layoutit.css" rel="stylesheet">
+  <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="./js/jquery-ui.js"></script>
+</head>
+
+<body class="edit">
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <div class="nav-collapse collapse">
+      <span class="brand"><strong>可视化布局</strong></span>
+        <ul class="nav" id="menu-layoutit">
+          <li>
+            <div class="btn-group">
+              <a href="index.html" class="btn btn-primary">
+                <i class="icon-home icon-white"></i>
+                首页
+              </a>
+            </div>
+            <!-- 编辑与预览 -->
+            <div class="btn-group" id="edit" data-toggle="buttons-radio">
+              <!-- 编辑按钮 -->
+              <button type="button" class="btn btn-primary active" id="editbutton">
+                <i class="icon-edit icon-white"></i>
+                编辑
+              </button>
+              <!-- 预览按钮 -->
+              <button type="button" id="sourcepreview" class="btn btn-primary">
+                <i class="icon-edit icon-white"></i>
+                预览
+              </button> 
+              <!-- 布局编辑 -->
+              <button type="button" id="devpreview" class="btn btn-primary">
+                <i class="icon-eye-close icon-white"></i>
+                布局编辑
+              </button>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" data-target="#downloadModal" onclick="downloadLayoutSrc();" role="button" data-toggle="modal">
+                <i class="icon-chevron-down icon-white"></i>
+                保存
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 父容器 -->
+<div class="container-fluid">
+  <div class="row-fluid">
+    <!-- sidebar-nav start -->
+    <div>
+        <div class="sidebar-nav">
+        <ul class="nav nav-list accordion-group">
+          <li class="nav-header">
+            <div class="pull-right popover-info">
+              <i class="icon-question-sign"></i>
+              <div class="popover fade right">
+                <div class="arrow"></div>
+                <h3 class="popover-title">帮助</h3>
+                <div class="popover-content">在这里设置你的栅格布局, 栅格总数默认为12, 用空格分割每列的栅格值。</div>
+              </div>
+            </div>
+            <i class="icon-plus icon-white"></i> 布局系统
+          </li>
+          <li class="rows" id="estRows">
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="12">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span12 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="3 9">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span3 column ui-sortable"></div>
+                  <div class="span9 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="6 6">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span6 column ui-sortable"></div>
+                  <div class="span6 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="8 4">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span8 column ui-sortable"></div>
+                  <div class="span4 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="9 3">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span9 column ui-sortable"></div>
+                  <div class="span3 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="4 4 4">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span4 column ui-sortable"></div>
+                  <div class="span4 column ui-sortable"></div>
+                  <div class="span4 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="2 6 4">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span2 column ui-sortable"></div>
+                  <div class="span6 column ui-sortable"></div>
+                  <div class="span4 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+            <div class="lyrow ui-draggable">
+              <a href="#close" class="remove label label-important">
+                <i class="icon-remove icon-white"></i>
+                删除
+              </a>
+              <span class="drag label">
+                <i class="icon-move icon-white"></i>
+                拖动
+              </span>
+              <div class="preview">
+                <input type="text" value="3 3 3 3">
+              </div>
+              <div class="view">
+                <div class="row-fluid clearfix">
+                  <div class="span3 column ui-sortable"></div>
+                  <div class="span3 column ui-sortable"></div>
+                  <div class="span3 column ui-sortable"></div>
+                  <div class="span3 column ui-sortable"></div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="nav nav-list accordion-group">
+          <li class="nav-header">
+            <i class="icon-plus icon-white"></i> 组件
+            <div class="pull-right popover-info">
+              <i class="icon-question-sign"></i>
+              <div class="popover fade right">
+                <div class="arrow"></div>
+                <h3 class="popover-title">帮助</h3>
+                <div class="popover-content">拖放组件到布局框内。拖入后你可以设置组件样式。</div>
+              </div>
+            </div>
+          </li>
+          <li class="boxes" id="elmComponents">
+            <div class="box box-element ui-draggable">
+              <a rel="nofollow" href="#close" class="remove label label-important"><i class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i class="icon-move icon-white"></i>拖动</span>
+              <span class="configuration"><button type="button" class="btn btn-mini" data-target="#editorModal" role="button" data-toggle="modal">编辑</button></span>
+              <div class="preview">查询条件</div>
+              <div class="view">
+                <div class="portlet-body form">
+                  <div class="panel-title clearfix">
+                  <span class="fl">查询条件</span>
+                  <span class="arrow" data-toggle="collapse" data-target="#One"></span>
+                  </div>
+                  <!-- BEGIN FORM-->
+                  <form id="queryterm" method="post" action="#">
+                  <div class="form-horizontal collapse in" id="One">
+                    <div class="form-body">
+                    <div class="row"></div>
+                    </div>
+                    <hr class="bor">
+                  </div>
+                  <div class="form-actions">
+                    <button type="submit" class="btn w100 btn-primary">查询</button>
+                  </div>
+                  </form>
+                  <!-- END FORM-->
+                </div>
+              </div>
+            </div>
+            <div class="box box-element ui-draggable">
+              <a rel="nofollow" href="#close" class="remove label label-important"><i class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i class="icon-move icon-white"></i>拖动</span>
+              <span class="configuration"><button type="button" class="btn btn-mini" data-target="#editorModal" role="button" data-toggle="modal">编辑</button></span>
+              <div class="preview">表格</div>
+              <div class="view">
+                <div class="portlet-body">
+                <div class="tableX portletTable">
+                  <table id="resultlist" class="table table-bordered table-striped table-advance table-condensed flip-content text-center tableCedu" style="width:100%;">
+                  <thead class="flip-content">
+                    <tr>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                      <th class="numeric text-center">&nbsp;列名&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                      <td class="numeric text-center">&nbsp;内容&nbsp;</td>
+                    </tr>
+                  </tbody>
+                  </table>
+                </div>
+                <div class="page clearfix">
+                  <div class="allNum clearfix"><span class="fl">共</span><em class="c_333 fl mr5 ml5"> 1234 </em><span class="fl">条</span> </div>
+                  <ul class="pageList clearfix">
+                    <li class="prev"><a class="dis" href=""><i class="fa fa-angle-left f20"></i></a></li>
+                    <li><a class="cur">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href=""><em class="f6">&bull;&bull;&bull;</em></a></li>
+                    <li><a href="">99</a></li>
+                    <li><a href="">100</a></li>
+                    <li class="next"><a href=""><i class="fa fa-angle-right f20"></i></a></li>
+                  </ul>
+                  <div class="setPage clearfix">
+                    <div class="fl mr5">
+                      <span class="fl mr5">每页</span>
+                      <div class="fl pageSelect mt6 ">
+                      <select name="" id="" class="select-page" style="width:50px;">
+                        <option value="1">10</option>
+                        <option value="2">20</option>
+                        <option value="3">50</option>
+                        <option value="4">100</option>
+                        <option value="5">200</option>
+                      </select>
+                      </div>
+                      <span class="fl ml5">条</span>
+                    </div>
+                    <div class="fl mr5"><span class="fl">到</span><input type="text" class="inp fl ml5 mr5 pg_bk ib tc mt6"><span class="fl">页</span></div>
+                    <div class="fl pg_go tc hand mt6">确定</div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="box box-element ui-draggable">
+              <a rel="nofollow" href="#close" class="remove label label-important"><i class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i class="icon-move icon-white"></i>拖动</span>
+              <span class="configuration"><button type="button" class="btn btn-mini" data-target="#editorModal" role="button" data-toggle="modal">编辑</button></span>
+              <div class="preview">柱状图</div>
+              <div class="view">
+                <img src="images\bar.jpg">
+              </div>
+            </div>
+            <div class="box box-element ui-draggable">
+              <a rel="nofollow" href="#close" class="remove label label-important"><i class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i class="icon-move icon-white"></i>拖动</span>
+              <span class="configuration"><button type="button" class="btn btn-mini" data-target="#editorModal" role="button" data-toggle="modal">编辑</button></span>
+              <div class="preview">折线图</div>
+              <div class="view">
+                <img src="images\line.jpg">
+              </div>
+            </div>
+            <div class="box box-element ui-draggable">
+              <a rel="nofollow" href="#close" class="remove label label-important"><i class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i class="icon-move icon-white"></i>拖动</span>
+              <span class="configuration"><button type="button" class="btn btn-mini" data-target="#editorModal" role="button" data-toggle="modal">编辑</button></span>
+              <div class="preview">堆叠面积图</div>
+              <div class="view">
+                <img src="images\linearea.jpg">
+              </div>
+            </div>
+            <div class="box box-element ui-draggable">
+              <a rel="nofollow" href="#close" class="remove label label-important"><i class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i class="icon-move icon-white"></i>拖动</span>
+              <span class="configuration"><button type="button" class="btn btn-mini" data-target="#editorModal" role="button" data-toggle="modal">编辑</button></span>
+              <div class="preview">饼图</div>
+              <div class="view">
+                <img src="images\pie.jpg">
+              </div>
+            </div>
+            <div class="box box-element ui-draggable">
+              <a rel="nofollow" href="#close" class="remove label label-important"><i class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i class="icon-move icon-white"></i>拖动</span>
+              <span class="configuration"><button type="button" class="btn btn-mini" data-target="#editorModal" role="button" data-toggle="modal">编辑</button></span>
+              <div class="preview">文字标签</div>
+              <div class="view">
+                <span class="label" contenteditable="true"> 标签名/标签值 </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- sidebar-nav end -->
+
+    <!-- 画板container -->
+    <div id="container" class="demo ui-sortable"></div>
+  </div>
+</div>
+<div class="modal hide fade" role="dialog" id="editorModal" style="display:none;" aria-hidden="true">
+  <div class="modal-header">
+    <a rel="nofollow" class="close" data-dismiss="modal">×</a>
+    <h3>参数设置</h3>
+  </div>
+  <div class="modal-body"></div>
+  <div class="modal-footer"> <a rel="nofollow" id="savecontent" class="btn btn-primary" data-dismiss="modal">确定</a> <a rel="nofollow" class="btn" data-dismiss="modal">取消</a> </div>
+</div>
+<script>
+$(function() {
+  var startdrag = true;
+  var stopsave = 0;
+
+  $(".sidebar-nav").accordion({
+    header: ".nav-header",
+    heightStyle: "content"
+  });
+
+  // 从sidebar-nav拖动时复制到container/demo
+  $(".sidebar-nav .lyrow").draggable({
+    connectToSortable: ".demo",
+    helper: "clone",
+    handle: ".drag",
+    drag: function(e, t) {
+      t.helper.width(400)
+    },
+    stop: function(e, t) {
+      $(".demo .column").sortable({
+        opacity: 0.35,
+        connectWith: ".column",
+        placeholder: "ui-sortable-placeholder"
+      });
+    }
+  });
+
+  //拖动时排序
+  $(".demo,.demo .column").sortable({
+    connectWith: ".column",
+    opacity: 0.35,
+    handle: ".drag",
+    placeholder: "ui-sortable-placeholder"
+  });
+
+  //拖动组件
+  $(".sidebar-nav .box").draggable({
+    connectToSortable: ".column",
+    helper: "clone",
+    handle: ".drag",
+    drag: function(e, t) {
+      t.helper.width(400)
+    }
+  });
+
+  $(".demo,.demo .column").disableSelection();
+
+  // 删除
+  $("#container").on("click", "a",
+  function() {
+    $(this).parent().remove();
+    return false;
+  });
+
+  //编辑
+  $(document).on("click", "#editbutton",
+  function() {
+    $("body").removeClass("devpreview sourcepreview");
+    $("body").addClass("edit");
+    removeMenuClasses();
+    $(this).addClass("active");
+    return false;
+  });
+
+  //预览
+  $(document).on("click", "#sourcepreview",
+  function() {
+    $("body").removeClass("edit");
+    $("body").addClass("devpreview sourcepreview");
+    removeMenuClasses();
+    $(this).addClass("active");
+    return false;
+  });
+
+  //布局编辑
+  $(document).on("click", "#devpreview",
+  function() {
+    $("body").removeClass("edit sourcepreview");
+    $("body").addClass("devpreview");
+    removeMenuClasses();
+    $(this).addClass("active");
+    return false;
+  });
+
+  $(document).on("submit", "form",
+  function() {
+    return false;
+  });
+});
+
+function removeMenuClasses() {
+  $("#menu-layoutit li button").removeClass("active");
+};
+
+</script>
+</body>
+</html>
